@@ -1,38 +1,86 @@
-.App {
+body {
+  color:#212f3c;
+  background-color: white;
   text-align: center;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  background-image: linear-gradient(to bottom right, navy, darkGray);
+  padding: 2%;
+  margin-bottom: 1%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.header h1 {
+  font-size: 250%;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+table {
+  margin: 0 auto 20px auto;
+  border-collapse: collapse;
+  background-color: black;
+}
+td {
+  width: 15px;
+  height: 15px;
+  border: 1px solid darkGray;
+}
+.alive {
+  background-color: white;
+}
+.alive:hover {
+  background-color: red;
+}
+.dead:hover {
+  background-color: darkGray;
+}
+button {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  margin: 20px 10px;
+  padding: 10px 15px;
+  font-size: 18px;
+  color: white;
+  background-color: darkGray;
+  cursor: pointer;
+}
+button:hover {
+  color: red;
+}
+.flexRow {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.upperControls, .lowerControls {
+  margin: auto 10%;
+}
+.upperControls {
+  width: 350px;
+}
+.lowerControls {
+  width: 500px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.boardLevel {
+  margin: 0 2.5%
+}
+.textBoxes {
+  width: 60%;
+}
+.textBoxes div {
+  margin: 0 5% 5%;
+}
+.rules {
+  font-size: 200%;
+}
+.rules ul {
+  text-align: left;
+}
+.about {
+  margin: 1% auto;
+}
+.about p {
+  text-align: center;
 }
