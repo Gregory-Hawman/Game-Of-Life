@@ -78,25 +78,25 @@ informational repo in yours.
 The main entry point of your application should house the visualization
 of this cellular automaton. Include necessary components, such as:
 
-* Grid to display cells. 
+* [x] Grid to display cells. 
 * Cell objects or components that, at a minimum, should have:
   * Properties
-    * current state: (alive, dead), (black, white)
-    * Clickable/Tappable:
-      * can be clicked to allow user to setup initial cell configuration
-      * should NOT be clickable while simulation is running
+    * [x] current state: (alive, dead), (black, white)
+    * [x] Clickable/Tappable:
+      * [x] can be clicked to allow user to setup initial cell configuration
+      * [] should NOT be clickable while simulation is running
     * Behaviors
-      * Toggle state functionality: switch between alive & dead either
+      * [x] Toggle state functionality: switch between alive & dead either
         because user manually toggled cell before starting simulation or
         simulation is running and rules of life caused cell to change
         state
-* An appropriate data structure to hold a grid of cells that is at least
+* [x] An appropriate data structure to hold a grid of cells that is at least
   25x25. Go as big as you want.
-* Text to display current generation # being displayed
-  * Utilize a timeout function to build the next generation of cells &
+* [x] Text to display current generation # being displayed
+  * [x] Utilize a timeout function to build the next generation of cells &
     update the display at the chosen time interval
-* Button(s) that start & stop the animation
-* Button to clear the grid
+* [x] Button(s) that start & stop the animation
+* [x] Button to clear the grid
 
 Write an algorithm that:
 
@@ -120,19 +120,19 @@ Write an algorithm that:
 
 Implement at least 3 of the following features:
 
-* [x] Create a few sample cell configurations that users can load and run
-* [s] Add an option that creates a random cell configuration that users can
+* [s][w] Create a few sample cell configurations that users can load and run
+* [x][x] Add an option that creates a random cell configuration that users can
   run
-* [] Add additional cell properties, like color or size, and incorporate
+* [][] Add additional cell properties, like color or size, and incorporate
   them into your visualization
-* [x] Allow users to specify the speed of the simulation
-* [x] Provide functionality to manually step through the simulation one
+* [x][x] Allow users to specify the speed of the simulation
+* [x][x] Provide functionality to manually step through the simulation one
   generation at a time, as opposed to animating automatically
-* [s] Allow users to change the dimension of the grid being displayed
-* [s] Given a specific generation, calculate the configuration of cells at
+* [s][] Allow users to change the dimension of the grid being displayed
+* [s][] Given a specific generation, calculate the configuration of cells at
   that point in time, and jump to that state, bypassing animation (i.e.
   skip ahead _n_ generations).
-* [] If you have an idea for a custom feature on this list, run it by your
+* [][] If you have an idea for a custom feature on this list, run it by your
   TL or instructor
 
 #### About
@@ -144,17 +144,17 @@ Implement at least 3 of the following features:
 
 ## Stretch Goals
 
-* Implement 2+ additional custom features, above
-* Deploy your app to a hosting service or, for iOS, to TestFlight (or
+* [x][w] Implement 2+ additional custom features, above
+* [x][] Deploy your app to a hosting service or, for iOS, to TestFlight (or
   the App Store!). Web devs can see [more deployment info
   here](resources/web/deployment).
-* Write a how-to guide or blog post that walks readers through the
+* [x][] Write a how-to guide or blog post that walks readers through the
   work you did to implement your project
-* Expand your simulation into the third dimension. Google `3D Conways
+* [][] Expand your simulation into the third dimension. Google `3D Conways
   Life`. Google for how to do 3D stuff on your platform. Web users might
   check out [3D-ThreeJS](https://github.com/LambdaSchool/3D-ThreeJS),
   and iOS might look at [SceneKit](https://developer.apple.com/scenekit/).
-* Explore alternate algorithms for finding the nth generation, such
+* [][] Explore alternate algorithms for finding the nth generation, such
   as [Hashlife](https://en.wikipedia.org/wiki/Hashlife)
 
 ## Sample Wireframe
