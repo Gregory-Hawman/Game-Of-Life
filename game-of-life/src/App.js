@@ -39,10 +39,10 @@ const Slider = ({ speed, onSpeedChange }) => {
 
 	return (
 		<input
-      type='range'
-      reversed
-      max='1000'
-      min='1'
+			type='range'
+			reversed
+			max='1000'
+			min='1'
 			step='1'
 			value={speed}
 			onChange={handleChange}
@@ -179,13 +179,25 @@ class App extends Component {
     	return (
     		<div>
 				<h1>Conway's Game of Life</h1>
-				<BoardGrid boardStatus={boardStatus} onToggleCellStatus={this.handleToggleCellStatus} />
+				<div>
+					<BoardGrid boardStatus={boardStatus} onToggleCellStatus={this.handleToggleCellStatus} />
+					<h3>Rules</h3>
+					<p>
+					The universe of the Game of Life is an infinite, two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive(white) or dead(black). 
+					<br/>Every cell interacts with its eight neighbors, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+
+					<br/>Any live cell with fewer than two live neighbors dies, as if by under-population.
+					<br/>Any live cell with two or three live neighbors lives on to the next generation.
+					<br/>Any live cell with more than three live neighbors dies, as if by overpopulation.
+					<br/>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+					</p>
+				</div>
 				<div className='flexRow upperControls'>
-					{/* <span>
+					<span>
 						{'+ '}
 						<Slider speed={speed} onSpeedChange={this.handleSpeedChange} />
 						{' -'}
-					</span> */}
+					</span>
 					{`Generation: ${generation}`}
 				</div>
 				<div className='flexRow lowerControls'>
