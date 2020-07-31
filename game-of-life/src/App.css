@@ -73,14 +73,24 @@ button:hover {
   margin: 0 5% 5%;
 }
 .rules {
+  font-size: 125%;
+}
+.rules h3 {
   font-size: 200%;
+  margin-bottom: 3%;
+}
+.rules h4 {
+  font-size: 125%;
+  margin: 5% 0;
 }
 .rules ul {
   text-align: left;
 }
-.about {
-  margin: 1% auto;
+.rules a {
+  font-size: 130%;
+  font-weight: 800;
 }
-.about p {
-  text-align: center;
+
+.rules p {
+  text-align: left;
 }

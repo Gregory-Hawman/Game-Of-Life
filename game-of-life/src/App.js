@@ -1,10 +1,38 @@
 import React, { Component } from 'react';
+import {gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './components/presets'
 import './App.css';
 
 
+// const totalBoardColumns = ({ width, onWidthChange }) => {
+// 	const handleChange = e => onWidthChange(e.target.value);
 
-let totalBoardRows = 40;
-let totalBoardColumns = 60;
+// 	return (
+// 		<input 
+// 			type='integer'
+// 			default='40'
+// 			max='1000'
+// 			min='25'
+// 			value={width}
+// 			onChange={handleChange}
+// 		/>
+// 	);
+// };
+// const totalBoardRows = ({ height, onHeightChange }) => {
+// 	const handleChange = e => onHeightChange(e.target.value);
+	
+// 	return (
+// 		<input 
+// 			type='integer'
+// 			default='60'
+// 			max='1000'
+// 			min='25'
+// 			value={height}
+// 			onChange={handleChange}
+// 		/>
+// 	);
+// };
+let totalBoardRows = 50;
+let totalBoardColumns = 70;
 const universalRows = totalBoardRows + 50;
 const universalColumns = totalBoardColumns + 50;
 const totalMiniBR = 6;
@@ -47,9 +75,9 @@ const BoardGrid = ({ boardStatus, onToggleCellStatus }) => {
 	const handleClick = (r,c) => onToggleCellStatus(r,c);
 
 	const tr = [];
-	for (let r = 0; r < totalBoardRows; r++) {
+	for (let r = 10; r < totalBoardRows; r++) {
   		const td = [];
-  		for (let c = 0; c < totalBoardColumns; c++) {
+  		for (let c = 10; c < totalBoardColumns; c++) {
     		td.push(
 		        <td
 		        	key={`${r},${c}`}
@@ -83,13 +111,12 @@ const MiniBoard = ({ boardStatus, onToggleCellStatus }) => {
 	return <table><tbody>{tr}</tbody></table>;
 };
 
-const Slider = ({ speed, onSpeedChange }) => {
+const TimeSlider = ({ speed, onSpeedChange }) => {
 	const handleChange = e => onSpeedChange(e.target.value);
 
 	return (
 		<input
 			type='range'
-			reversed
 			max='1000'
 			min='1'
 			step='1'
@@ -99,6 +126,37 @@ const Slider = ({ speed, onSpeedChange }) => {
 	);
 };
 
+const WidthGraphSlider = ({ totalBoardColumns, onWidthChange }) => {
+	const handleChange = e => onWidthChange(e.target.value);
+
+	return (
+		<input 
+			type='range'
+			max='500'
+			min='25'
+			step='1'
+			value={totalBoardColumns}
+			onChange={handleChange}
+		/>
+	);
+};
+
+const HeightGraphSlider = (totalBoardRows, { onHeightChange }) => {
+	const handleChange = e => onHeightChange(e.target.value);
+
+	return (
+		<input 
+			type='range'
+			max='500'
+			min='25'
+			step='1'
+			value={totalBoardRows}
+			onChange={handleChange}
+		/>
+	);
+};
+
+
 class App extends Component {
 	state = {
 		boardStatus: newBoardStatus(),
@@ -106,8 +164,8 @@ class App extends Component {
 		generation: 0,
 		isGameRunning: false,
 		speed: 500,
-		width: totalBoardColumns,
-		height: totalBoardRows
+		width: 70,
+		height: 50
 	};
 
 	runStopButton = () => {
@@ -204,6 +262,14 @@ class App extends Component {
 		this.setState({ speed: newSpeed });
 	}
 
+	handleWidthChange = newWidth => {
+		this.setState({ width: newWidth });
+	}
+
+	handleHeightChange = newHeight => {
+		this.setState({ height: newHeight });
+	}
+
 	handleRun = () => {
 		this.setState({ isGameRunning: true });
 	}
@@ -242,12 +308,15 @@ class App extends Component {
 					<div className='flexRow textBoxes'>
 						<div>
 							<h3>Presets</h3>
-							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} /> <h4>Gosper Glider Gun</h4> </div>
-							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} /> <h4>Simkin Glider Gun</h4> </div>
-							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} /> <h4>Pulsar</h4> </div>
-							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} /> <h4>3 Spaceships</h4> </div>
+							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} onClick={() => this.BoardGrid({gosperGliderGun})} /> <h4>Gosper Glider Gun</h4> </div>
+							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} onClick={() => this.handleStep(simkinGliderGun)} /> <h4>Simkin Glider Gun</h4> </div>
+							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} onClick={() => this.handleStep(spaceships)} /> <h4>Pulsar</h4> </div>
+							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} onClick={() => this.handleStep(pulsar)} /> <h4>3 Spaceships</h4> </div>
 						</div>
 						<div className='rules'>
+							<p>
+								<a>Conway's Game of Life</a> is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves. It is Turing complete and can simulate a universal constructor or any other Turing machine.
+							</p>
 							<h3>Rules</h3>
 							<ul>
 								<li>Any live cell with fewer than two live neighbors dies, as if by under-population.</li>
@@ -258,19 +327,24 @@ class App extends Component {
 								<br/>
 								<li>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.</li>
 							</ul>
-							
 						</div>
 					</div>
 				</div>
 				<div className='flexRow upperControls'>
 					<span>
 						{'+ '}
-						<Slider speed={speed} onSpeedChange={this.handleSpeedChange} />
+						<TimeSlider speed={speed} onSpeedChange={this.handleSpeedChange} />
+						{' -'}
+						{'+ '}
+						<WidthGraphSlider width={this.state.width} onWidthChange={this.handleWidthChange} />
+						{' -'}
+						{'+ '}
+						<HeightGraphSlider height={this.state.height} onHeightChange={this.handleHeightChange} />
 						{' -'}
 					</span>
 					<span>
-						<input value={this.state.width}/>
-						<input value={this.state.height}/>
+						<input value={this.state.width} onChange={this.handleWidthChange}/>
+						<input value={this.state.height} onChange={this.handleHeightChange}/>
 					</span>
 					{`Generation: ${generation}`}
 				</div>
@@ -279,13 +353,6 @@ class App extends Component {
 					<button type='button' disabled={isGameRunning} onClick={this.handleStep}>Step</button>
 					<button type='button' onClick={this.handleClearBoard}>Clear Board</button>
 					<button type='button' onClick={this.handleNewBoard}>Random Board</button>
-				</div>
-				<div className='about'>
-					<h4>About</h4>
-					<p>
-						The universe of the Game of Life is an infinite, two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive (white) or dead (black). 
-						<br/>Every cell interacts with its eight neighbors, which are the cells that are horizontally, vertically, or diagonally adjacent.
-					</p>
 				</div>
 			</div>
 		);
