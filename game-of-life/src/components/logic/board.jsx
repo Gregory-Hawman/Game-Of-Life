@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './components/presets'
-import './css/App.css';
+import '../../css/App.css';
 
 let totalBoardRows = 50;
 let totalBoardColumns = 70;

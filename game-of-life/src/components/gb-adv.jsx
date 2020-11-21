@@ -1,7 +1,7 @@
 import React from 'react';
 import About from './about';
 import Buttons from './buttons';
-import Game from './game';
+import Game from './logic/game';
 import Rules from './rules';
 import Title from './title';
 import '../css/index.css'

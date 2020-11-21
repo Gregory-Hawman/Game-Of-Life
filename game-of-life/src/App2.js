@@ -1,9 +1,6 @@
 import React from 'react';
-import About from './components/about';
-import Game from './components/game';
 import Gameboy from './components/gameboy';
-import GameboyAdv from './components/gb-adv';
-import Rules from './components/rules';
+
 import './css/App.css';
 import './css/index.css';
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './components/presets'
 import './css/App.css';
 
-
+// CHANGE WIDTH AND HEIGHT OF BOARD
 // const totalBoardColumns = ({ width, onWidthChange }) => {
 // 	const handleChange = e => onWidthChange(e.target.value);
 
@@ -31,6 +31,7 @@ import './css/App.css';
 // 		/>
 // 	);
 // };
+
 let totalBoardRows = 50;
 let totalBoardColumns = 70;
 const universalRows = totalBoardRows + 50;
@@ -49,6 +50,7 @@ const newBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
 	return grid;
 };
 
+// SET THE BOARD TO ONE OF THE PRESET PATTERNS
 // const presetBoardStatus = () => {
 // 	const grid = [];
 // 	for (let r = 0; r < totalBoardRows; r++) {
@@ -92,6 +94,7 @@ const BoardGrid = ({ boardStatus, onToggleCellStatus }) => {
 };
 
 const MiniBoard = ({ boardStatus, onToggleCellStatus }) => {
+	// CLICK TO INIT PRESET
 	// const handleClick = (r,c) => onToggleCellStatus(r,c);
 
 	const tr = [];
