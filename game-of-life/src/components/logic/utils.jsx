@@ -1,8 +1,21 @@
-import React, { Component } from 'react';
-import {gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './components/presets'
-import './css/App.css';
+import React from 'react';
 
-const TimeSlider = ({ speed, onSpeedChange }) => {
+// ===== UNIVERSAL VARS ===== //
+let vBR = 45;
+let vBC = 60;
+
+export const universalVars = {
+	visibleBoardRows : vBR,
+	visibleBoardColumns : vBC,
+	universalRows : vBR + 50,
+	universalColumns : vBC + 50,
+	totalMiniBR : 6,
+	totalMiniBC : 6
+}
+// ===== UNIVERSAL VARS ===== //
+
+// ===== SLIDERS ===== //
+export const TimeSlider = ({ speed, onSpeedChange }) => {
 	const handleChange = e => onSpeedChange(e.target.value);
 
 	return (
@@ -46,3 +59,4 @@ const HeightGraphSlider = (totalBoardRows, { onHeightChange }) => {
 		/>
 	);
 };
+// ===== SLIDERS ===== //

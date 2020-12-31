@@ -15,24 +15,33 @@ body {
   }
   
   table {
-    margin: 0 auto 20px auto;
+    margin: 0rem auto;
     border-collapse: collapse;
     background-color: black;
+    border: 5px solid black;
   }
+
   td {
-    width: 15px;
-    height: 15px;
-    border: 1px solid darkGray;
+    width: 8px;
+    height: 8px;
   }
+
   .alive {
+    background-color: black;
+  }
+
+  .alive:hover {
+    background-color: darkGray;
+  }
+
+  .dead {
     background-color: white;
   }
-  .alive:hover {
-    background-color: red;
-  }
+
   .dead:hover {
     background-color: darkGray;
   }
+
   button {
     border: none;
     outline: none;
@@ -44,21 +53,26 @@ body {
     background-color: darkGray;
     cursor: pointer;
   }
+
   button:hover {
     color: red;
   }
+
   .flexRow {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: flex-start;
   }
+
   .upperControls, .lowerControls {
     margin: auto 10%;
   }
+
   .upperControls {
     width: 350px;
   }
+
   .lowerControls {
     width: 500px;
   }
@@ -66,26 +80,33 @@ body {
   .boardLevel {
     margin: 0 2.5%
   }
+
   .textBoxes {
     width: 60%;
   }
+
   .textBoxes div {
     margin: 0 5% 5%;
   }
+
   .rules {
     font-size: 125%;
   }
+
   .rules h3 {
     font-size: 200%;
     margin-bottom: 3%;
   }
+
   .rules h4 {
     font-size: 125%;
     margin: 5% 0;
   }
+
   .rules ul {
     text-align: left;
   }
+
   .rules a {
     font-size: 130%;
     font-weight: 800;

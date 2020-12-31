@@ -284,6 +284,7 @@ class App extends Component {
 	componentDidUpdate(prevProps, prevState) {
 		const { isGameRunning, speed } = this.state;
 		const speedChanged = prevState.speed !== speed;
+		console.log('HAS SPEED CHANGED', speedChanged);
 		const gameStarted = !prevState.isGameRunning && isGameRunning;
 		const gameStopped = prevState.isGameRunning && !isGameRunning;
 
@@ -338,12 +339,15 @@ class App extends Component {
 						{'+ '}
 						<TimeSlider speed={speed} onSpeedChange={this.handleSpeedChange} />
 						{' -'}
-						{'+ '}
+
+						{/* ===== WIDTH AND HEIGHT SLIDERS ===== */}
+						{/* {'+ '}
 						<WidthGraphSlider width={this.state.width} onWidthChange={this.handleWidthChange} />
 						{' -'}
 						{'+ '}
 						<HeightGraphSlider height={this.state.height} onHeightChange={this.handleHeightChange} />
-						{' -'}
+						{' -'} */}
+						{/* ===== WIDTH AND HEIGHT SLIDERS ===== */}
 					</span>
 					<span>
 						<input value={this.state.width} onChange={this.handleWidthChange}/>

@@ -1,3 +1,11 @@
+@font-face {
+  font-family: GameBoyFont;
+  src: url(../fonts/GameCube.ttf);
+}
+@font-face {
+  font-family: Pixelboy;
+  src: url(../fonts/Pixeboy.ttf);
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -281,22 +289,99 @@ a {
   margin: 4rem 0;
   border-radius: 15px 15px 75px 15px;
   background-color: #b6ab9f;
-  width: 60rem;
+  width: 55rem;
   height: 80rem;
   padding-top: 3rem;
 }
 .screen-border {
-  border-radius: 15px 15px 75px 15px;
+  border-radius: 15px 15px 55px 15px;
   background-color: black;
   margin: 0 auto 0;
   padding-top: 2.5rem;
-  width: 80%;
+  width: 90%;
   height: 40rem;
 }
 .screen {
-  margin: 0 auto;
-  width: 40rem;
-  height: 35rem;
+  margin: -0.5rem 2.3rem;
+  width: 45rem;
+  height: 36rem;
   background-color: white;
   border-radius: 5px;
+}
+.logo h1 {
+  font-family: Pixelboy;
+  font-size: 10rem;
+  padding: 7rem 0 0 0;
+}
+.logo h2 {
+  font-family: Pixelboy;
+  font-size: 6.7rem;
+  margin: -2rem 0 7.2rem 0;
+  padding: 0 0 0 0;
+}
+.about h1 {
+  font-family: Pixelboy;
+  font-size: 4rem;
+  padding: 1rem 0 0 0;
+}
+.about p {
+  font-family: Pixelboy;
+  font-size: 1.75rem;
+  padding: 0rem 3rem 0 5.3rem;
+  text-align: left;
+}
+.about {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.rules {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.rules h1 {
+  font-family: Pixelboy;
+  font-size: 4rem;
+  padding: 1rem 0 0 0;
+}
+.rules ul li {
+  font-family: Pixelboy;
+  font-size: 1.75rem;
+  padding: 0rem 3rem 0 5.3rem;
+  text-align: left;
+}
+.rules ul {
+  margin-bottom: 3.1rem;
+}
+.OSB {
+  font-family: Pixelboy;
+  border: 3px solid black;
+  border-radius: 3px;
+  background-color: white;
+  color: black;
+  padding: 0.5rem 1rem;
+}
+.OSB2 {
+  font-family: Pixelboy;
+  border: 3px solid black;
+  border-radius: 3px;
+  background-color: white;
+  color: black;
+  width: 15%;
+  margin: 1.5rem 0 0 5.3rem;
+}
+.OSB3 {
+  font-family: Pixelboy;
+  border: 3px solid black;
+  border-radius: 3px;
+  background-color: white;
+  color: black;
+  width: 15%;
+  margin: 1.5rem 0 0 5.3rem;
+}
+.OSBGroup {
+  display: flex;
+  justify-content: space-between;
+  margin: -1rem 4rem 0;
 }

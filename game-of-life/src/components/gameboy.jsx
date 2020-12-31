@@ -1,16 +1,28 @@
-import React from 'react';
-import About from './about';
+import React, { useState } from 'react';
+
+import {newBoardStatus} from './logic/board';
+import {newMiniBoardStatus} from './logic/miniBoard';
 import Buttons from './buttons';
-import Game from './logic/game';
-import Rules from './rules';
+import Screen from './screen'
 import Title from './title';
+
 import '../css/index.css'
  
 function Gameboy () {
+      // ===== STATE ===== //
+	const [boardStatus, setBoardStatus] = useState(newBoardStatus());
+	const [miniBoardStatus, setMiniBoardStatus] = useState(newMiniBoardStatus());
+	const [generation, setGeneration] = useState(0);
+	const [isGameRunning, setIsGameRunning] = useState(false);
+	const [speed, setSpeed] = useState(500);
+	const [width, setWidth] = useState(70);
+	const [height, setHeight] = useState(50);
+	// ===== STATE ===== //
+
     return (
         <div className='gameboy'>
             <div className='screen-border'>
-                <Game />    
+                <Screen />    
             </div>
             <div className='btn-half'>
                 <Title />
