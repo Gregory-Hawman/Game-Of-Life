@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './components/presets'
-import './css/App.css';
+import { gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './version1/components/presets';
+import './version1/css/App.css';
+
+import About from './version1/components/about';
 
 // CHANGE WIDTH AND HEIGHT OF BOARD
 // const totalBoardColumns = ({ width, onWidthChange }) => {
@@ -318,9 +320,7 @@ class App extends Component {
 							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} onClick={() => this.handleStep(pulsar)} /> <h4>3 Spaceships</h4> </div>
 						</div>
 						<div className='rules'>
-							<p>
-								<a>Conway's Game of Life</a> is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves. It is Turing complete and can simulate a universal constructor or any other Turing machine.
-							</p>
+							<About />
 							<h3>Rules</h3>
 							<ul>
 								<li>Any live cell with fewer than two live neighbors dies, as if by under-population.</li>

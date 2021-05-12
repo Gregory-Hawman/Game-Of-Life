@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { universalVars } from './utils';
-import '../../css/App.css';
+import '../../css/App2.css';
 
 const uv = universalVars
 
