@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import {newBoardStatus} from './logic/board';
-import {newMiniBoardStatus} from './logic/miniBoard';
+import {newBoardStatus} from '../logic/board';
+import {newMiniBoardStatus} from '../logic/miniBoard';
 import Buttons from './buttons';
 import Screen from './screen'
 import Title from './title';
 
-import '../css/index.css'
+import '../../css/index.css';
  
 function Gameboy () {
       // ===== STATE ===== //

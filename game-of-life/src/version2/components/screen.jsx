@@ -2,14 +2,14 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { useState } from 'react';
 
-import Game from './logic/game';
+import Game from '../logic/game';
 import About from './about';
 import Rules from './rules';
 import Controls from './controls';
 import {defaultPreset, gosperGliderGun} from './presets';
 import OnScreenButtons from './OnScreenButtons';
 
-import '../css/index.css'
+import '../../css/index.css';
 
 function Logo () {
     return (

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './version1/components/presets';
-import './version1/css/App.css';
+import { gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './components/presets';
+import '../css/App.css';
 
-import About from './version1/components/about';
+import About from './components/about';
 
 // CHANGE WIDTH AND HEIGHT OF BOARD
 // const totalBoardColumns = ({ width, onWidthChange }) => {

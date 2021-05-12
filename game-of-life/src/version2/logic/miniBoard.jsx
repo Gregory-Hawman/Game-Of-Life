@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { universalVars } from './utils';
-import { gosperGliderGun, simkinGliderGun, spaceships, pulsar } from '../presets'
+import { gosperGliderGun, simkinGliderGun, spaceships, pulsar } from '../components/presets';
+import '../../css/index.css';
 
 const uv = universalVars;
 
