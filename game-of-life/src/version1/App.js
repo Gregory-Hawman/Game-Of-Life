@@ -1,171 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './components/presets';
 import '../css/App.css';
 
 import About from './components/about';
-
-// CHANGE WIDTH AND HEIGHT OF BOARD
-// const totalBoardColumns = ({ width, onWidthChange }) => {
-// 	const handleChange = e => onWidthChange(e.target.value);
-
-// 	return (
-// 		<input 
-// 			type='integer'
-// 			default='40'
-// 			max='1000'
-// 			min='25'
-// 			value={width}
-// 			onChange={handleChange}
-// 		/>
-// 	);
-// };
-// const totalBoardRows = ({ height, onHeightChange }) => {
-// 	const handleChange = e => onHeightChange(e.target.value);
-	
-// 	return (
-// 		<input 
-// 			type='integer'
-// 			default='60'
-// 			max='1000'
-// 			min='25'
-// 			value={height}
-// 			onChange={handleChange}
-// 		/>
-// 	);
-// };
-
-let totalBoardRows = 50;
-let totalBoardColumns = 70;
-const universalRows = totalBoardRows + 50;
-const universalColumns = totalBoardColumns + 50;
-const totalMiniBR = 6;
-const totalMiniBC = 6;
-
-const newBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
-	const grid = [];
-	for (let r = 0; r < universalRows; r++) {
-		grid[r] = [];
-		for (let c = 0; c < universalColumns; c++) {
-			grid[r][c] = cellStatus();
-		}
-	}
-	return grid;
-};
-
-// SET THE BOARD TO ONE OF THE PRESET PATTERNS
-// const presetBoardStatus = () => {
-// 	const grid = [];
-// 	for (let r = 0; r < totalBoardRows; r++) {
-// 		grid[r] = [];
-// 		for (let c = 0; c < totalBoardColumns; c++) {
-// 			grid[r][c] = cellStatus();
-// 		}
-// 	}
-// 	return grid;
-// };
-
-const newMiniBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
-	const grid = [];
-	for (let r = 0; r < totalMiniBR; r++) {
-		grid[r] = [];
-		for (let c = 0; c < totalMiniBC; c++) {
-			grid[r][c] = cellStatus();
-		}
-	}
-	return grid;
-};
-
-const BoardGrid = ({ boardStatus, onToggleCellStatus }) => {
-	const handleClick = (r,c) => onToggleCellStatus(r,c);
-
-	const tr = [];
-	for (let r = 10; r < totalBoardRows; r++) {
-  		const td = [];
-  		for (let c = 10; c < totalBoardColumns; c++) {
-    		td.push(
-		        <td
-		        	key={`${r},${c}`}
-					className={boardStatus[r][c] ? 'alive' : 'dead'}
-					onClick={() => handleClick(r,c)}
-				/>
-    		);
-  		}
-  		tr.push(<tr key={r}>{td}</tr>);
-	}
-	return <table><tbody>{tr}</tbody></table>;
-};
-
-const MiniBoard = ({ boardStatus, onToggleCellStatus }) => {
-	// CLICK TO INIT PRESET
-	// const handleClick = (r,c) => onToggleCellStatus(r,c);
-
-	const tr = [];
-	for (let r = 0; r < totalMiniBR; r++) {
-  		const td = [];
-  		for (let c = 0; c < totalMiniBC; c++) {
-    		td.push(
-		        <td
-		        	key={`${r},${c}`}
-					className={boardStatus[r][c] ? 'alive' : 'dead'}
-					// onClick={() => handleClick(r,c)}
-				/>
-    		);
-  		}
-  		tr.push(<tr key={r}>{td}</tr>);
-	}
-	return <table><tbody>{tr}</tbody></table>;
-};
-
-const TimeSlider = ({ speed, onSpeedChange }) => {
-	const handleChange = e => onSpeedChange(e.target.value);
-
-	return (
-		<input
-			type='range'
-			max='1000'
-			min='1'
-			step='1'
-			value={speed}
-			onChange={handleChange}
-		/>
-	);
-};
-
-const WidthGraphSlider = ({ totalBoardColumns, onWidthChange }) => {
-	const handleChange = e => onWidthChange(e.target.value);
-
-	return (
-		<input 
-			type='range'
-			max='500'
-			min='25'
-			step='1'
-			value={totalBoardColumns}
-			onChange={handleChange}
-		/>
-	);
-};
-
-const HeightGraphSlider = (totalBoardRows, { onHeightChange }) => {
-	const handleChange = e => onHeightChange(e.target.value);
-
-	return (
-		<input 
-			type='range'
-			max='500'
-			min='25'
-			step='1'
-			value={totalBoardRows}
-			onChange={handleChange}
-		/>
-	);
-};
-
+import Rules from './components/rules';
+import Navbar from './components/navbar';
+import { UVs } from './components/utils';
+import { BoardGrid, MiniBoard, newBoardStatus, newMiniBoardStatus } from './components/boards';
+import { TimeSlider, WidthGraphSlider, HeightGraphSlider } from './components/sliders';
+import { defaultPreset, gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './components/presets';
 
 class App extends Component {
 	state = {
 		boardStatus: newBoardStatus(),
 		miniBoardStatus: newMiniBoardStatus(),
+		presetBoardStatus: {
+
+		},
 		generation: 0,
 		isGameRunning: false,
 		speed: 500,
@@ -232,7 +83,7 @@ class App extends Component {
 				return neighbors.reduce((trueNeighbors, neighbor) => {
 					const x = r + neighbor[0];
 					const y = c + neighbor[1];
-					const isNeighborOnBoard = (x >= 0 && x < universalRows && y >= 0 && y < universalColumns);
+					const isNeighborOnBoard = (x >= 0 && x < UVs.universalRows && y >= 0 && y < UVs.universalColumns);
 					/* No need to count more than 4 alive neighbors due to rules */
 					if (trueNeighbors < 4 && isNeighborOnBoard && boardStatus[x][y]) {
 						return trueNeighbors + 1;
@@ -242,8 +93,8 @@ class App extends Component {
 				}, 0);
 			};
 
-			for (let r = 0; r < universalRows; r++) {
-				for (let c = 0; c < universalColumns; c++) {
+			for (let r = 0; r < UVs.universalRows; r++) {
+				for (let c = 0; c < UVs.universalColumns; c++) {
 					const totalTrueNeighbors = amountTrueNeighbors(r,c);
 
 					if (!boardStatus[r][c]) {
@@ -305,10 +156,8 @@ class App extends Component {
 		const { boardStatus, miniBoardStatus, isGameRunning, generation, speed } = this.state;
 
     	return (
-    		<div>
-				<div className='header'>
-					<h1>Conway's Game of Life</h1>
-				</div>
+    		<div className='App'>
+				<Navbar />
 				<div className='flexRow boardLevel'>
 					<BoardGrid boardStatus={boardStatus} onToggleCellStatus={this.handleToggleCellStatus} />
 					<div className='flexRow textBoxes'>
@@ -319,18 +168,9 @@ class App extends Component {
 							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} onClick={() => this.handleStep(spaceships)} /> <h4>Pulsar</h4> </div>
 							<div className='miniBoards'> <MiniBoard boardStatus={miniBoardStatus} onClick={() => this.handleStep(pulsar)} /> <h4>3 Spaceships</h4> </div>
 						</div>
-						<div className='rules'>
+						<div>
 							<About />
-							<h3>Rules</h3>
-							<ul>
-								<li>Any live cell with fewer than two live neighbors dies, as if by under-population.</li>
-								<br/>
-								<li>Any live cell with two or three live neighbors lives on to the next generation.</li>
-								<br/>
-								<li>Any live cell with more than three live neighbors dies, as if by overpopulation.</li>
-								<br/>
-								<li>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.</li>
-							</ul>
+							<Rules />
 						</div>
 					</div>
 				</div>
