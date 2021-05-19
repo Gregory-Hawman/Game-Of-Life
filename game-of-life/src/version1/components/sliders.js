@@ -1,35 +1,5 @@
 import React from 'react';
 
-// CHANGE WIDTH AND HEIGHT OF BOARD
-// const totalBoardColumns = ({ width, onWidthChange }) => {
-// 	const handleChange = e => onWidthChange(e.target.value);
-
-// 	return (
-// 		<input 
-// 			type='integer'
-// 			default='40'
-// 			max='1000'
-// 			min='25'
-// 			value={width}
-// 			onChange={handleChange}
-// 		/>
-// 	);
-// };
-// const totalBoardRows = ({ height, onHeightChange }) => {
-// 	const handleChange = e => onHeightChange(e.target.value);
-	
-// 	return (
-// 		<input 
-// 			type='integer'
-// 			default='60'
-// 			max='1000'
-// 			min='25'
-// 			value={height}
-// 			onChange={handleChange}
-// 		/>
-// 	);
-// };
-
 export const TimeSlider = ({ speed, onSpeedChange }) => {
 	const handleChange = e => onSpeedChange(e.target.value);
 
@@ -45,7 +15,7 @@ export const TimeSlider = ({ speed, onSpeedChange }) => {
 	);
 };
 
-export const WidthGraphSlider = ({ totalBoardColumns, onWidthChange }) => {
+export const WidthBoardSlider = ({ universalColumns, onWidthChange }) => {
 	const handleChange = e => onWidthChange(e.target.value);
 
 	return (
@@ -54,13 +24,13 @@ export const WidthGraphSlider = ({ totalBoardColumns, onWidthChange }) => {
 			max='500'
 			min='25'
 			step='1'
-			value={totalBoardColumns}
+			value={universalColumns}
 			onChange={handleChange}
 		/>
 	);
 };
 
-export const HeightGraphSlider = (totalBoardRows, { onHeightChange }) => {
+export const HeightBoardSlider = ({ universalRows, onHeightChange }) => {
 	const handleChange = e => onHeightChange(e.target.value);
 
 	return (
@@ -69,7 +39,7 @@ export const HeightGraphSlider = (totalBoardRows, { onHeightChange }) => {
 			max='500'
 			min='25'
 			step='1'
-			value={totalBoardRows}
+			value={universalRows}
 			onChange={handleChange}
 		/>
 	);

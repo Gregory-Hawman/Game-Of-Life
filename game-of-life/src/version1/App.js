@@ -7,8 +7,7 @@ import Rules from './components/rules';
 import Navbar from './components/navbar';
 import { UVs } from './components/utils';
 import { BoardGrid, MiniBoard, newBoardStatus, newMiniBoardStatus } from './components/boards';
-import { TimeSlider, WidthGraphSlider, HeightGraphSlider } from './components/sliders';
-import { defaultPreset, gosperGliderGun, simkinGliderGun, spaceships, pulsar } from './components/presets';
+import { TimeSlider, WidthBoardSlider, HeightBoardSlider } from './components/sliders';
 
 class App extends Component {
 	state = {
@@ -153,7 +152,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { boardStatus, miniBoardStatus, isGameRunning, generation, speed } = this.state;
+		const { boardStatus, miniBoardStatus, isGameRunning, generation, speed, height, width } = this.state;
 
     	return (
     		<div className='App'>
@@ -176,17 +175,17 @@ class App extends Component {
 				</div>
 				<div className='flexRow upperControls'>
 					<span>
-						{'+ '}
+						{'Speed + '}
 						<TimeSlider speed={speed} onSpeedChange={this.handleSpeedChange} />
 						{' -'}
 
 						{/* ===== WIDTH AND HEIGHT SLIDERS ===== */}
-						{/* {'+ '}
-						<WidthGraphSlider width={this.state.width} onWidthChange={this.handleWidthChange} />
+						{'Width + '}
+						<WidthBoardSlider width={width} onWidthChange={this.handleWidthChange} />
 						{' -'}
-						{'+ '}
-						<HeightGraphSlider height={this.state.height} onHeightChange={this.handleHeightChange} />
-						{' -'} */}
+						{'Height + '}
+						<HeightBoardSlider height={height} onHeightChange={this.handleHeightChange} />
+						{' -'}
 						{/* ===== WIDTH AND HEIGHT SLIDERS ===== */}
 					</span>
 					<span>

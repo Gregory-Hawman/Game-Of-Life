@@ -1,3 +1,5 @@
+import React from 'react'
+
 // ===== UNIVERSAL VARS ===== //
 let vBR = 45;
 let vBC = 60;
