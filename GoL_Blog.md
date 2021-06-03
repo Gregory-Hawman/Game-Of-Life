@@ -46,3 +46,5 @@ The Algorithm
     - Has the rules that cells need to follow once turned on
 
 Ok so I have a loose plan set up with what I need and can start working on, with even some stretch in mind.
+
+Want to add drag clicking and Stamps.
