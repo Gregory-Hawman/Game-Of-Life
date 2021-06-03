@@ -22,7 +22,7 @@ function Title (props) {
         props.setMenuOpen(!props.menuOpen);
     };
 
-    useEffect(() => {
+    useEffect((props) => {
         const pageClickEvent = (e) => {
             if (dropdownRef.current !== null && !dropdownRef.current.contains(e.target)) {
                 props.setMenuOpen(!props.menuOpen);
