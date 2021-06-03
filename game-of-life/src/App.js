@@ -3,6 +3,7 @@ import Title from './components/title';
 import Game from './components/game';
 import About from './components/about';
 import Rules from './components/rules';
+import './css/App.css'
 
 function App () {
 	const [menuOpen, setMenuOpen] = useState(false)
@@ -32,6 +33,7 @@ function App () {
 					<Rules 
 					menuState={menuState}
 					/>
+
 				</div>
 			</div>
 		</div>
