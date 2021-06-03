@@ -246,7 +246,7 @@ class Game extends Component {
 	}
 
 	render() {
-		const { boardStatus, miniBoardStatus, isGameRunning, generation, speed } = this.state;
+		const { boardStatus, isGameRunning, generation, speed } = this.state;
 
     	return (
     		<div>
