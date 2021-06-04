@@ -1,5 +1,6 @@
 body {
   color:#fff;
+  z-index: -9999;
   background-color: #000925;
   text-align: center;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -7,6 +8,7 @@ body {
 }
 
 .app-container {
+  z-index: -8888;
   display: flex;
   justify-content: center;
   overflow: hidden;
